@@ -8,6 +8,7 @@ App.EmberChartsTimeSeriesController = App.SlideController.extend
   barGroupPadding: 0.25
   barLeftOffset: 0.0
   yAxisFromZero: no
+  xPosition: 12
 
   # ---------
   # Data Selection
@@ -39,6 +40,7 @@ App.EmberChartsTimeSeriesController = App.SlideController.extend
     monthly_return_single_period: App.data.monthly_return_single_period
     monthly_return_double_period: App.data.monthly_return_double_period
     monthly_return_negative_period: App.data.monthly_return_negative_period
+    hourly_curr_value: App.data.hourly_curr_value
     daily_curr_value: App.data.daily_curr_value
     daily_diff_value: App.data.daily_diff_value
     daily_two_series: App.data.daily_two_series
@@ -58,8 +60,8 @@ App.EmberChartsTimeSeriesController = App.SlideController.extend
     same_value_ungrouped: App.data.same_value_ungrouped
     empty: App.data.empty
   barDataHash: Ember.computed.alias 'lineDataHash'
-  selectedLineData: 'daily_two_series'
-  selectedBarData: 'monthly_return_triple_series'
+  selectedLineData: 'hourly_curr_value'
+  selectedBarData: ''
 
   dataIntervals: [
     'day',
@@ -69,9 +71,14 @@ App.EmberChartsTimeSeriesController = App.SlideController.extend
   ]
 
   tickIntervals: [
+    'hours',
     'weeks',
     'months',
     'quarters',
     'years'
   ]
-  selectedInterval: 'months'
+  selectedInterval: 'hours'
+
+  actions:
+    setXPosition: (position) ->
+      @set('xPosition', position)

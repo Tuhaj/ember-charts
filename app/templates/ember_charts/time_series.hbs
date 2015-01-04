@@ -11,6 +11,8 @@
         selectedInterval=selectedInterval
         selectedSeedColor=selectedSeedColor
         barPadding=barPadding
+        xPosition=xPosition
+        setXPosition='setXPosition'
         barGroupPadding=barGroupPadding
         barLeftOffset=barLeftOffset
         yAxisFromZero=yAxisFromZero
@@ -23,6 +25,14 @@
       <h4>Ember Bindings</h4>
 
       <div class="form-horizontal">
+        <div class="form-group">
+          <label class="col-lg-4 control-label">Set hour</label>
+          <div class="col-lg-8">
+            {{view App.ScrubberComponent min="0" max="24" step="1" valueBinding="xPosition"}}
+            <span class="help-block">Current hour: {{xPosition}}</span>
+          </div>
+        </div>
+
         <div class="form-group">
           <label class="col-lg-4 control-label">Line Data</label>
           <div class="col-lg-8">
@@ -70,6 +80,7 @@
             <span class="help-block">Bar Padding: {{barPadding}}</span>
           </div>
         </div>
+
         <div class="form-group">
           <label class="col-lg-4 control-label">Bar Group Padding</label>
           <div class="col-lg-8">

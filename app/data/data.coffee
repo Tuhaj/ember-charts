@@ -34,6 +34,7 @@ require 'build/app/data/multi_value/ungrouped_zeroes'
 
 # single time series
 require 'build/app/data/time_series/daily_curr_value'
+require 'build/app/data/time_series/hourly_curr_value'
 require 'build/app/data/time_series/daily_diff_value'
 require 'build/app/data/time_series/daily_two_series'
 require 'build/app/data/time_series/daily_three_series'

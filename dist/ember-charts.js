@@ -1,6 +1,6 @@
 /*!
 * ember-charts v0.3.0
-* Copyright 2012-2014 Addepar Inc.
+* Copyright 2012-2015 Addepar Inc.
 * See LICENSE.
 */
 (function() {
@@ -447,13 +447,16 @@ Ember.Charts.HasTimeSeriesRule = Ember.Mixin.create({
       return hideDetails(d, i, this);
     }).attr({
       "class": 'line-marker',
-      fill: this.get('lineColorFn'),
-      d: d3.svg.symbol().size(50).type('circle')
+      fill: this.get('lineColorFn')
     });
     lineMarkers.exit().remove();
-    lineMarkers.attr({
-      transform: function(d) {
-        return "translate(" + d.x + "," + d.y + ")";
+    ({
+      setPositionOnHourBar: function() {
+        var hour, percentage, xRange;
+        xRange = this.get('xRange');
+        percentage = d.x / d3.max(xRange);
+        hour = Math.floor(percentage * 24);
+        return this.sendAction('setXPosition', hour);
       }
     });
     return lineMarkers.style({
@@ -716,9 +719,6 @@ Ember.Charts.TimeSeriesLabeler = Ember.Mixin.create({
       case 'days':
       case 'D':
         return d3.time.days;
-      case 'hours':
-      case 'H':
-        return d3.time.hours;
       case 'seconds':
       case 'S':
         return function(start, stop) {
@@ -2701,6 +2701,7 @@ Ember.Charts.TimeSeriesComponent = Ember.Charts.ChartComponent.extend(Ember.Char
   classNames: ['chart-time-series'],
   lineData: null,
   barData: null,
+  xPosition: null,
   formatTime: d3.time.format('%Y-%m-%d'),
   formatTimeLong: d3.time.format('%a %b %-d, %Y'),
   ungroupedSeriesName: 'Other',

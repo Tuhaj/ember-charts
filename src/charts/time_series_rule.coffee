@@ -41,18 +41,25 @@ Ember.Charts.HasTimeSeriesRule = Ember.Mixin.create
     lineMarkers.enter()
       .append('path')
       .on("mouseover", (d,i) -> showDetails(d,i,this))
-      .on("mouseout", (d,i) -> hideDetails(d,i,this))
+      .on("mouseout",  (d,i) -> hideDetails(d,i,this))
       .attr
         class: 'line-marker'
         fill: @get 'lineColorFn'
-        d: d3.svg.symbol().size(50).type('circle')
+        # d: d3.svg.symbol().size(50).type('circle')
 
     lineMarkers.exit().remove()
 
     # Update the line marker icons with the latest position data
-    lineMarkers.attr
-      transform: (d) ->
-        "translate(#{d.x},#{d.y})"
+    setPositionOnHourBar: ->
+      xRange = @get 'xRange'
+      percentage = d.x / d3.max(xRange)
+      hour = Math.floor(percentage * 24)
+      @sendAction('setXPosition', hour)
+
+    # lineMarkers.attr
+      # transform: (d) =>
+        # setPositionOnHourBar()
+        # "translate(#{d.x},#{d.y})"
 
     lineMarkers.style
       'stroke-width': (d) ->

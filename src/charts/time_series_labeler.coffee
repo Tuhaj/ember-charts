@@ -140,7 +140,7 @@ Ember.Charts.TimeSeriesLabeler = Ember.Mixin.create
       when 'months', 'M' then ((start, stop) => @labelledMonths(start, stop))
       when 'weeks' , 'W'  then ((start, stop) => @labelledWeeks(start, stop))
       when 'days' , 'D' then d3.time.days
-      when 'hours' , 'H' then d3.time.hours
+      # when 'hours' , 'H' then d3.time.hours
       when 'seconds', 'S' then ((start, stop) => @labelledSeconds(start, stop))
       else d3.time.years
   .property 'maxNumberOfLabels', 'selectedInterval'

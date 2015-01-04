@@ -17,6 +17,14 @@ Ember.Charts.TimeSeriesComponent = Ember.Charts.ChartComponent.extend(
   lineData: null
   barData: null
 
+  xPosition: null
+
+
+  # setXPosition: Ember.computed (->
+  #   console.log @get('xPosition')
+  #   console.log 'change in x position'
+  # ).property('xPosition')
+
   # ----------------------------------------------------------------------------
   # Time Series Chart Options
   # ----------------------------------------------------------------------------
