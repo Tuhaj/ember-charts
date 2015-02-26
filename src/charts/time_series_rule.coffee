@@ -45,7 +45,7 @@ Ember.Charts.HasTimeSeriesRule = Ember.Mixin.create
       .attr
         class: 'line-marker'
         fill: @get 'lineColorFn'
-        d: d3.svg.symbol().size(50).type('circle')
+        # d: d3.svg.symbol().size(50).type('circle')
 
     lineMarkers.exit().remove()
 
