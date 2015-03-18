@@ -591,16 +591,16 @@ Ember.Charts.TimeSeriesComponent = Ember.Charts.ChartComponent.extend(
     'yScale']
 
   drawChart: ->
-    @updateBarData()
+    # @updateBarData()
     @updateLineData()
     @updateLineMarkers()
-    @updateAxes()
-    @updateBarGraphic()
+    # @updateAxes()
+    # @updateBarGraphic()
     @updateLineGraphic()
-    if @get('hasLegend')
-      @drawLegend()
-    else
-      @clearLegend()
+    # if @get('hasLegend')
+      # @drawLegend()
+    # else
+      # @clearLegend()
 
   updateAxes: ->
     xAxis = d3.svg.axis()

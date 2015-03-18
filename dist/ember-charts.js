@@ -3286,17 +3286,9 @@ Ember.Charts.TimeSeriesComponent = Ember.Charts.ChartComponent.extend(Ember.Char
   }).volatile(),
   renderVars: ['barLeftOffset', 'labelledTicks', 'xGroupScale', 'xTimeScale', 'yScale'],
   drawChart: function() {
-    this.updateBarData();
     this.updateLineData();
     this.updateLineMarkers();
-    this.updateAxes();
-    this.updateBarGraphic();
-    this.updateLineGraphic();
-    if (this.get('hasLegend')) {
-      return this.drawLegend();
-    } else {
-      return this.clearLegend();
-    }
+    return this.updateLineGraphic();
   },
   updateAxes: function() {
     var gXAxis, gYAxis, graphicHeight, graphicLeft, graphicTop, xAxis, yAxis;
